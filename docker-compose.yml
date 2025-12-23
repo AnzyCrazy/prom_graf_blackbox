@@ -1,0 +1,43 @@
+services:
+
+  prometheus:
+    image: prom/prometheus:latest # I know that isn't best practise, but today UI doesn't work properly
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    container_name: prometheus
+    hostname: prometheus
+    ports:
+      - 9090:9090
+    restart: always
+    environment:
+      TZ: "Europe/Minsk"
+    networks:
+      - default
+ 
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    hostname: grafana
+    restart: always
+    environment:
+      TZ: "Europe/Minsk"
+    networks:
+      - default
+    volumes:
+      - grafana_data:/var/lib/grafana
+    ports:
+      - 3000:3000
+
+  blackbox-exporter:
+    image: prom/blackbox-exporter:latest
+    container_name: blackbox-exporter
+    ports:
+      - 9115:9115
+    volumes:
+      - ./blackbox/blackbox.yml:/etc/blackbox_exporter/config.yml
+    restart: always
+
+volumes:
+  prometheus_data:
+  grafana_data:
