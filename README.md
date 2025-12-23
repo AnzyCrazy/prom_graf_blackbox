@@ -23,5 +23,5 @@ https://github.com/marcelloraffaele/qr-generator
 ID борды, которую импортировал: 13659
 
 Графики с метриками и просто метрики с релейблингом:
-![[Pasted image 20251223215340.png]]
-![[Pasted image 20251223215404.png]]
+![HTTP Probe Duration](Pasted%20image%2020251223215340.png)
+![HTTP Probe Phases Duration](Pasted%20image%2020251223215404.png)
